@@ -1,5 +1,5 @@
 import User from './User'
-import { useGetUsersQuery } from "../users/usersApiSlice";
+import { useGetUsersQuery } from "./usersApiSlice";
 
 const UserList = () => {
     const {
@@ -26,12 +26,12 @@ const UserList = () => {
             : null
 
         content = (
-            <table className='table table--users'>
+            <table className="table table--users">
                 <thead classname="table__thead">
                     <tr>
-                        <th scope='col' className='table__th user__username'>Username</th>
-                        <th scope='col' className='table__th user__roles'>Roles</th>
-                        <th scope='col' className='table__th user__edit'> Edit</th>
+                        <th scope="col" className="table__th user__username">Username</th>
+                        <th scope="col" className="table__th user__roles">Roles</th>
+                        <th scope="col" className="table__th user__edit"> Edit</th>
                     </tr>
                 </thead>
                 <tbody>

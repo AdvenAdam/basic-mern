@@ -9,11 +9,11 @@ const notesAdapter = createEntityAdapter({
 const initialState = notesAdapter.getInitialState();
 
 export const notesApiSlice = apiSlice.injectEndpoints({
-    endpoints: (builder) => ({
+    endpoints: builder => ({
         getNotes: builder.query({
             query: () => '/notes',
             validateStatus: (response, result) => {
-                return response.status === 20 && !result.isError;
+                return response.status === 200 && !result.isError;
             },
             keepUnuserdDataFor: 5,
             transformResponse: (responseData) => {
