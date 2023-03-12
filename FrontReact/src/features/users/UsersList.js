@@ -1,5 +1,5 @@
 import User from './User'
-import { useGetUsersQuery } from "../notes/notesApiSlice";
+import { useGetUsersQuery } from "../users/usersApiSlice";
 
 const UserList = () => {
     const {

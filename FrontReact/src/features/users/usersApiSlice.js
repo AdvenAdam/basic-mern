@@ -1,8 +1,8 @@
-import { createSelector, creatteEntityAdapter } from '@reduxjs/toolkit';
+import { createSelector, createEntityAdapter } from '@reduxjs/toolkit';
 
 import { apiSlice } from '../../app/api/apiSlice';
 
-const usersAdapter = creatteEntityAdapter({});
+const usersAdapter = createEntityAdapter({});
 
 const initialState = usersAdapter.getInitialState();
 
