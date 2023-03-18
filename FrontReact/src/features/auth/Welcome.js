@@ -9,12 +9,13 @@ const Welcome = () => {
             <p>{today}</p>
 
             <h1> Welcome !</h1>
-            <p>
-                <Link to="/dash/notes">View techNotes</Link>
-            </p>
-            <p>
-                <Link to="/dash/users"> View User Setting</Link>
-            </p>
+            <p><Link to="/dash/notes">View techNotes</Link></p>
+
+            <p><Link to="/dash/notes/new">Add New techNote</Link></p>
+
+            <p><Link to="/dash/users">View User Settings</Link></p>
+
+            <p><Link to="/dash/users/new">Add New User</Link></p>
         </section>
     );
     return content;

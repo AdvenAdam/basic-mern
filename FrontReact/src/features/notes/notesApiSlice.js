@@ -13,17 +13,16 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         getNotes: builder.query({
             query: () => '/notes',
             validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError;
+                return response.status === 200 && !result.isError
             },
-            keepUnuserdDataFor: 5,
-            transformResponse: (responseData) => {
-                const loadedNotes = responseData.map((note) => {
-                    note.id = note._id;
+            transformResponse: responseData => {
+                const loadedNotes = responseData.map(note => {
+                    note.id = note._id
                     return note
                 });
                 return notesAdapter.setAll(initialState, loadedNotes)
             },
-            providesrags: (result, error, arg) => {
+            providesTags: (result, error, arg) => {
                 if (result?.ids) {
                     return [
                         { type: 'Note', id: 'LIST' },
@@ -37,11 +36,11 @@ export const notesApiSlice = apiSlice.injectEndpoints({
                 url: '/notes',
                 method: 'POST',
                 body: {
-                    ...initialNote
+                    ...initialNote,
                 }
             }),
-            providesTags: [
-                { type: 'Note', id: 'LIST' }
+            invalidatesTags: [
+                { type: 'Note', id: "LIST" }
             ]
         }),
         updateNote: builder.mutation({
@@ -49,23 +48,23 @@ export const notesApiSlice = apiSlice.injectEndpoints({
                 url: '/notes',
                 method: 'PATCH',
                 body: {
-                    ...initialNote
+                    ...initialNote,
                 }
             }),
-            providesTags: (result, error, arg) => [
+            invalidatesTags: (result, error, arg) => [
                 { type: 'Note', id: arg.id }
             ]
         }),
-        deleteNote: builder.muation({
+        deleteNote: builder.mutation({
             query: ({ id }) => ({
-                url: '/notes',
+                url: `/notes`,
                 method: 'DELETE',
                 body: { id }
             }),
-            providesTags: (result, error, arg) => [
+            invalidatesTags: (result, error, arg) => [
                 { type: 'Note', id: arg.id }
             ]
-        })
+        }),
     }),
 })
 
