@@ -1,4 +1,4 @@
-import { useSelector } from 'react-dom'
+import { useSelector } from 'react-redux'
 import { selectCurrentToken } from '../features/auth/authSlice'
 import jwtDecode from 'jwt-decode'
 
@@ -13,7 +13,7 @@ const useAuth = () => {
         const { username, roles } = decoded.UserInfo
 
         isManager = roles.includes('Manager')
-        isAdmin = roles.indcludes('Admin')
+        isAdmin = roles.includes('Admin')
 
         if (isManager) status = "Manager"
         if (isAdmin) status = "Admin"

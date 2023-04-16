@@ -11,7 +11,7 @@ const EditUser = () => {
             user: data?.entities[id]
         }),
     })
-    if (!user) return <PulseLoader color={"fff"} />
+    if (!user) return <PulseLoader color="fff" />
     const content = <EditUserForm user={user} />
 
     return content

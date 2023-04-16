@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { setCredential } from './authSlice'
+import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 
 import usePresist from '../../hooks/usePresist'
@@ -33,7 +33,7 @@ const Login = () => {
         e.preventDefault()
         try {
             const { accessToken } = await login({ username, password }).unwrap()
-            dispatch(setCredential({ accessToken }))
+            dispatch(setCredentials({ accessToken }))
             setUsername('')
             setPassword('')
             navigate('/dash')
