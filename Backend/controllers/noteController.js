@@ -37,7 +37,7 @@ const createNewNote = asyncHandler(async (res, req) => {
         return res.status(400).json({ message: `All Field Are Required` });
     }
     // check duplicate
-    const duplicate = await Note.findOne({ title }).lean().exec();
+    const duplicate = await Note.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec();
     if (duplicate) {
         return res.status(400).json({ massage: `Notes allready exist` });
     }
@@ -70,7 +70,7 @@ const updateNote = asyncHandler(async (res, req) => {
         return res.status(400).json({ message: `User Not Found` });
     }
     // duplcate data
-    const duplicate = await Note.findOne({ title }).lean().exec();
+    const duplicate = await Note.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec();
     if (duplicate && duplicate?._id != id) {
         return res.status(400).json({ message: `Duplicate Note` });
     }
